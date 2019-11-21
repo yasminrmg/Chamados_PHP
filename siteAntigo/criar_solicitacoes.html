@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+		<!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="css/CSS.css">
+		
+		<title>Nova Solicitação</title>
+	
+	</head>
+	<body>
+	
+	<!-- Menu-->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="borda">
+	  <a class="navbar-brand" href="#">Logo</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	  </button>
+	  <!--Home-->
+	  <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+		<ul class="navbar-nav mr-auto">
+		  <li class="nav-item active">
+			<a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+		  </li>
+		  <!--Avisos-->
+		  <li class="nav-item">
+			<a class="nav-link" href="#">Avisos</a>
+		  </li>
+		  <!--Solicitação-->
+		  <li class="nav-item dropdown">
+			<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			  Solicitações
+			</a>
+			<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+			  <a class="dropdown-item" href="#">Criar Solicitação</a>
+			  <a class="dropdown-item" href="#">Minhas Solicitações</a>
+			</div>
+		  </li>
+		</ul>
+		<form class="form-inline">
+			<a class="nav-link" href="login.php">
+			  Login
+			</a>
+		</form>
+	  </div>
+	</nav>
+
+<!-- Div central do página-->
+<div id="parent">
+
+
+	<div class="hero-unit">
+		<h1 align="center" >Criar Solicitações</h1>
+		<div class="form-group">
+			<!-- campo numero da solicitação -->
+			<label >Número da solicitação</label>
+			<input type="text" class="form-control" placeholder="Esse numero deve ser puxado do banco" >
+			</br>
+			<!-- campo titulo-->
+			<label >Titulo</label>
+			<input type="text" class="form-control" placeholder="Titulo da solicitação" >
+			</br>
+			<!-- campo da data-->
+			<label >Data do evento</label>
+			<input type="date" class="form-control" id="teste"  name="validade">
+			<!-- campo descição da solicitação-->
+			</br>
+			<label >Descrição da solicitação</label>
+			<textarea class="form-control" rows="3"></textarea>
+			
+			<!-- botão salvar-->
+			<button style=" margin-top: 25px;" type="button" class="btn btn-success">Salvar</button>
+			<!-- botão cancelar-->
+			<button style=" margin-top: 25px; margin-left: 25px; " type="button" class="btn btn-danger">Cancelar</button>
+		</div>
+		
+
+
+	</div>
+
+ </body>
+ </div  >	
+<!-- Div do roda pé-->
+ <div >
+	<footer class="text-muted text-center text-small container-fluid"  style=" position: fixed; bottom:0; left:0; background-color: #c8c8c8; padding: 20px; "  >
+        <p class="mb-1 text-uppercase">&copy; 2019 momento boulevard</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#">Privacy</a></li>
+          <li class="list-inline-item"><a href="#">Terms</a></li>
+          <li class="list-inline-item"><a href="#">Support</a></li>
+        </ul>
+    </footer>
+</div>
+</html>
+			<!-- bootstrap-->
+			<!-- Optional JavaScript -->
+			<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+			<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+	
+
+</html>

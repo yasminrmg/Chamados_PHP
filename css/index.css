@@ -1,0 +1,16 @@
+.bolinhas
+{
+    height: 250px;
+    width: 250px;
+    vertical-align: middle;
+    line-height: 250px;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.bolinhas:hover
+{
+    color: black !important;
+    cursor: pointer;
+}
