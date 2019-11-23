@@ -1,5 +1,5 @@
 <?php
-    include '../classes/class.Usuario.php';
+    include '../classes/usuario/class.Usuario.php';
     include_once '../classes/class.Sessao.php';
 
     $usuario= $_POST["usuario"];
@@ -9,6 +9,7 @@
     $retorno = array();
     $resultado = $usuarioDao->validaLogin($usuario, $senha);
 
+
     if($resultado[0]["SUCESSO"])
     {
         if($resultado[0]["PERMITIDO"] == 1)
@@ -17,8 +18,8 @@
             
             $sessao = new Sessao();
             
-            $sessao->gravaValorSessao('CodUsuario',$resultado[0]["CODUSUARIO"]);
-            $sessao->gravaValorSessao('NomeUsuario',$resultado[0]["NOMEUSUARIO"]);
+            $sessao->gravaValorSessao('CodUsuario',$resultado[0]["ID_USUARIO"]);
+            $sessao->gravaValorSessao('NomeUsuario',$resultado[0]["NOME_USUARIO"]);
 
             if(!$retorno["ADMINISTRATIVO"])
                 $sessao->gravaValorSessao('Administrativo',false);

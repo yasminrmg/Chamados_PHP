@@ -1,7 +1,7 @@
 <?php
-	include_once 'class.Consultor.php';
+	include_once '../classes/conexao/class.Consultor.php';
 
-    class UsuarioDao
+	class UsuarioDao
     {
         public function validaLogin($usuario, $senha)
 		{
@@ -11,8 +11,15 @@
         
         private function sqlConsultaLogin($usuario, $senha)
 		{
-			return "EXEC P_VALIDA_LOGIN @USUARIO= '$usuario', @SENHA= '$senha';";
-			
+			return "SELECT 
+						1 'SUCESSO', 
+						1 'PERMITIDO', 
+						ID_TIPO_USUARIO AS 'ADMINISTRATIVO',  
+						ID_USUARIO, 
+						NOME, 
+						SENHA 
+					FROM USUARIO 
+					WHERE LOGIN = '$usuario' AND SENHA = '$senha';";			
 		}
     }
 ?>

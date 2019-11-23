@@ -128,21 +128,21 @@ var Master =
     {
         switch (strTipo) {
             case "erro":
-                $('#ctl00_lblTituloAviso').text(strTitulo == null ? "ERRO!" : strTitulo);
-                $('#ctl00_lblTituloAviso').attr('class', "modalErro");
-                $('#ctl00_lblTextoAviso').text(strMensagem);
+                $('#lblTituloAviso').text(strTitulo == null ? "ERRO!" : strTitulo);
+                $('#lblTituloAviso').attr('class', "modalErro");
+                $('#lblTextoAviso').text(strMensagem);
                 $('#modal_aviso_generico').modal('show');
                 break;
             case "sucesso":
-                $('#ctl00_lblTituloAviso').text(strTitulo == null ? "SUCESSO!" : strTitulo);
-                $('#ctl00_lblTituloAviso').attr('class', "modalSucesso");
-                $('#ctl00_lblTextoAviso').text(strMensagem);
+                $('#lblTituloAviso').text(strTitulo == null ? "SUCESSO!" : strTitulo);
+                $('#lblTituloAviso').attr('class', "modalSucesso");
+                $('#lblTextoAviso').text(strMensagem);
                 $('#modal_aviso_generico').modal('show');
                 break;
             case "aviso":
-                $('#ctl00_lblTituloAviso').text(strTitulo == null ? "AVISO!" : strTitulo);
-                $('#ctl00_lblTituloAviso').attr('class', "modalAviso");
-                $('#ctl00_lblTextoAviso').text(strMensagem);
+                $('#lblTituloAviso').text(strTitulo == null ? "AVISO!" : strTitulo);
+                $('#lblTituloAviso').attr('class', "modalAviso");
+                $('#lblTextoAviso').text(strMensagem);
                 $('#modal_aviso_generico').modal('show');
                 break;
         }

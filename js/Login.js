@@ -2,6 +2,7 @@ var Login =
 {
     validar : function()
     {
+        event.preventDefault();
         if(Master.validaFormulario("formLogin"))
         {
             var Ajax = new RunAjax();

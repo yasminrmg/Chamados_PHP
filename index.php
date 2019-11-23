@@ -73,6 +73,7 @@
 
     <script src="js/geral/Master.js"></script>
     <script src="js/Geral.js"></script>
+    <script src="js/geral/Ajax.js"></script>
     <script src="js/Login.js"></script>
   </body>
 </html>
