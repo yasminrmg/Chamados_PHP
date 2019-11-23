@@ -39,6 +39,7 @@ CREATE TABLE usuario (
     id_tipo_usuario int,
     cpf varchar(15),
     data_nascimento datetime,
+	sexo ENUM('M', 'F') not null,
     nome_usuario varchar(100),
     email varchar(200),
     login varchar(30) not null,
