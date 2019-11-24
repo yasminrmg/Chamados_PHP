@@ -16,64 +16,68 @@
   </head>
   <body>
 
-    <form class="form-cadastro col-md-6 m-auto p-4">
+    <form id="formCadastro" class="form-cadastro col-md-6 m-auto p-4" onsubmit="return Usuario.cadastrar();">
         <div class="card">
-            <div class="card-header alert-info text-center">
+            <div class="card-header text-center">
                 <h2>Momento Boulevard</h2>
             </div>
-            <div class="card-body">
-            <h4 class="card-title mb-0">Cadastre-se</h4>
-            <small class="font-weight-bold">Os campos marcados com "*" são obrigatórios.</small>
-            <div class="form-row mt-4">
-                <div class="form-group col-md-12">
-                    <label for="txtNome">Nome completo *</label>
-                    <input type="text" class="form-control obrigatorio" id="txtNome" placeholder="Nome completo">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txtNascimento">Nascimento *</label>
-                    <input type="text" class="form-control calendario dd-mm-yyyy obrigatorio" id="txtNascimento" placeholder="dd/mm/aaaa">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="txtCPF">CPF *</label>
-                    <input type="text" class="form-control obrigatorio" id="txtCPF" placeholder="99.999.999-99">
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="sltSexo">Sexo *</label>
-                    <select class="form-control obrigatorio" id=sltSexo">
-                        <option value="M">Masculino</option>
-                        <option value="F">Feminino</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="txtEmail">E-mail *</label>
-                    <input type="text" class="form-control obrigatorio" id="txtEmail" placeholder="email@dominio.com">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="txtUsuario">Usuário *</label>
-                    <input type="text" class="form-control obrigatorio" id="txtUsuario" placeholder="Usuário">
-                </div>
-                <div class="form-group col-md-3">
-                    <label for="txtSenha">Senha *</label>
-                    <input type="password" class="form-control obrigatorio" id="txtSenha">
-                </div>
-                <div class="form-group col-md-8">
-                    <label for="sltCondominio">Condominio *</label>
-                    <select class="form-control condominio obrigatorio" id=sltCondominio" onchange="Apartamento.popular();">
+            <div id="dvCadastro" class="card-body">
+                <h4 class="card-title mb-0">Cadastre-se</h4>
+                <small class="font-weight-bold">Os campos marcados com "*" são obrigatórios.</small>
+                <div class="form-row mt-4">
+                    <div class="form-group col-md-12">
+                        <label for="txtNome">Nome completo *</label>
+                        <input type="text" class="form-control obrigatorio" id="txtNome" name="txtNome" placeholder="Nome completo">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtNascimento">Nascimento *</label>
+                        <input type="text" class="form-control calendario dd-mm-yyyy obrigatorio" id="txtNascimento" name="txtNascimento" placeholder="dd/mm/aaaa">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="txtCPF">CPF *</label>
+                        <input type="text" class="form-control cpf obrigatorio" id="txtCPF" name="txtCPF" placeholder="99.999.999-99">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sltSexo">Sexo *</label>
+                        <select class="form-control obrigatorio" id=sltSexo" name="sltSexo">
+                            <option value="M">Masculino</option>
+                            <option value="F">Feminino</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label for="txtEmail">E-mail *</label>
+                        <input type="text" class="form-control obrigatorio" id="txtEmail" name="txtEmail" placeholder="email@dominio.com">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="txtUsuario">Usuário *</label>
+                        <input type="text" class="form-control obrigatorio" id="txtUsuario" name="txtUsuario" placeholder="Usuário">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label for="txtSenha">Senha *</label>
+                        <input type="password" class="form-control obrigatorio" id="txtSenha" name="txtSenha">
+                    </div>
+                    <div class="form-group col-md-8">
+                        <label for="sltCondominio">Condominio *</label>
+                        <select class="form-control condominio obrigatorio" id=sltCondominio" name="sltCondominio" onchange="Apartamento.popular();">
 
-                    </select>
-                </div>
-                <div class="form-group col-md-4">
-                    <label for="sltApartamento">Apartamento *</label>
-                    <select class="form-control apartamento obrigatorio" id=sltApartamento">
+                        </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="sltApartamento">Apartamento *</label>
+                        <select class="form-control apartamento obrigatorio" id=sltApartamento" name="sltApartamento">
 
-                    </select>
-                </div>
-            </div>
-                
+                        </select>
+                    </div>
+                </div>                    
                 <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar-me</button>
             </div>
+            <div id="dvConclusao" class="card-body d-none text-center">
+                <h3 class="card-title">Sua solicitação de cadastro foi recebida, em breve o sindico entrará em contato para confirmar seu cadastro.</h3>
+            </div>
         </div>
-        <?php include "rodape.php"; ?>
+        <div class="rodape">
+            <?php include "rodape.php"; ?>
+        </div>
     </form>
 
     <div class="modal modalAviso" id="modal_aviso_generico" data-backdrop="static" style="display: none;" aria-hidden="true">
@@ -122,7 +126,6 @@
         $(document).ready(function()
         {
             Condominio.popular();
-            Apartamento.popular();
         });
     </script>
   </body>

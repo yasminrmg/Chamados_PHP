@@ -187,6 +187,7 @@ var Master =
     },
     ativaMascaras: function ()
     {
+        $('.cpf').mask("999.999.999-99");
         $('.calendario.dd-mm').mask('99/99');
         $('.calendario.dd-mm-yyyy').mask('99/99/9999');
 

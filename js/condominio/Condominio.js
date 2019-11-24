@@ -31,6 +31,8 @@ var Condominio =
                     +'</option>'
                 );
             });
+
+            Apartamento.popular(dados.CONDOMINIOS[0].id_condominio);  
         }
         else
             Master.exibeModalAviso("erro", "Ocorreu um erro ao carregar os condomínios.", "Atenção!")

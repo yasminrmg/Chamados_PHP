@@ -1,12 +1,12 @@
 var Apartamento = 
 {
-    popular : function()
+    popular : function(condominio = null)
     {
         var Ajax = new RunAjax();
         Ajax._url = 'acoes/listar_apartamento.php';
         Ajax._method = 'POST';
         Ajax._tipo_data = 'json';
-        Ajax._postdata ={'condominio': $(".condominio").val() };
+        Ajax._postdata ={'condominio': condominio != null ? condominio : $(".condominio").val() };
         Ajax.setMostraCarregando(true);
         Ajax.setFechaCarregando(true);
         Ajax.setMostraErro(true);
@@ -25,9 +25,9 @@ var Apartamento =
                 $('.apartamento').append
                 (
                     '<option value="'
-                    + item.CODIGO
+                    + item.id_apartamento
                     + '">'
-                    + item.NOME
+                    + item.bloco + ' - Nº ' + item.n_apartamento
                     + '</option>'
                 );
             });

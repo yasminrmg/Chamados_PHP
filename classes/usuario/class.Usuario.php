@@ -21,5 +21,48 @@
 					FROM USUARIO 
 					WHERE LOGIN = '$usuario' AND SENHA = '$senha';";			
 		}
+
+		public function inserirUsuario($nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento)
+		{
+			$consultor = new Consultor();
+			return $consultor->consultar($this->sqlConsultaInserirUsuario($nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento));
+        }
+        
+        private function sqlConsultaInserirUsuario($nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento)
+		{
+			return
+			"
+				INSERT INTO USUARIO
+				(
+					ID_TIPO_USUARIO,
+					CPF,
+					DATA_NASCIMENTO,
+					SEXO,
+					NOME_USUARIO,
+					EMAIL,
+					LOGIN,
+					SENHA,
+					ID_APARTAMENTO,
+					ID_OPERADOR,
+					APROVADO,
+					DATA_APROVACAO
+				)
+				VALUES
+				(
+					3,
+					'$cpf',
+					'$nascimento',
+					'$sexo',
+					'$nome',
+					'$email',
+					'$usuario',
+					'$senha',
+					$apartamento,
+					1,
+					0,
+					NOW()
+				)
+			";			
+		}
     }
 ?>
