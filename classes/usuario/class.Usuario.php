@@ -5,7 +5,7 @@
     {
         public function validaLogin($usuario, $senha)
 		{
-			$consultor = new Consultor('S');
+			$consultor = new Consultor();
 			return $consultor->consultar($this->sqlConsultaLogin($usuario, $senha));
         }
         

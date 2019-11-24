@@ -21,7 +21,7 @@ var Login =
         else
             return false;
     },
-    trataRetorno(dados)
+    trataRetorno : function(dados)
     {
         if (dados.SUCESSO == true)
         {	
@@ -33,4 +33,4 @@ var Login =
         else
             Master.exibeModalAviso("aviso", "Usuário e/ou senha inválidos.", "Atenção!")
     }
-}
+};
