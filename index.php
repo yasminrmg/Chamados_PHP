@@ -21,7 +21,7 @@
       <div class="col-md-5 p-lg-2 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Bem vindo!</h1>
         <p class="lead font-weight-normal">Este é o sistema mais moderno e completo de gerenciamento e solicitações para condominios.</p>
-        <a class="btn btn-outline-secondary" href="cadastro.php">Cadastre-se</a>
+        <a class="btn btn-outline-secondary" href="usuario_cadastro.php">Cadastre-se</a>
       </div>
     </div>
 
@@ -72,7 +72,7 @@
     <script src="lib/datepicker/locales/bootstrap-datepicker.pt-BR.min.js"></script>
 
     <script src="js/geral/Master.js"></script>
-    <script src="js/Geral.js"></script>
+    <!-- <script src="js/Geral.js"></script> -->
     <script src="js/geral/Ajax.js"></script>
     <script src="js/Login.js"></script>
   </body>

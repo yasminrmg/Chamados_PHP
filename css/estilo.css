@@ -24,6 +24,11 @@
     padding: 100px 0 0 0;
     
 }
+
 *.sombra-carregamento{
     filter: alpha(opacity = 60);
+}
+
+.accordion .card:hover{
+    cursor: pointer;
 }

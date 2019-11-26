@@ -25,10 +25,7 @@ var Login =
     {
         if (dados.SUCESSO == true)
         {	
-            if(!dados.ADMINISTRATIVO)
-                $(location).attr('href', 'home.php');
-            else
-                $(location).attr('href', 'administracao.php');
+            $(location).attr('href', 'solicitacoes.php');
         }
         else
             Master.exibeModalAviso("aviso", "Usuário e/ou senha inválidos.", "Atenção!")

@@ -14,11 +14,11 @@
 			return "SELECT 
 						1 'SUCESSO', 
 						1 'PERMITIDO', 
-						ID_TIPO_USUARIO AS 'ADMINISTRATIVO',  
+						ID_TIPO_USUARIO,  
 						ID_USUARIO, 
-						NOME, 
+						NOME_USUARIO, 
 						SENHA 
-					FROM USUARIO 
+					FROM USUARIO  
 					WHERE LOGIN = '$usuario' AND SENHA = '$senha';";			
 		}
 
@@ -62,6 +62,36 @@
 					0,
 					NOW()
 				)
+			";			
+		}
+
+		public function listarUsuarios()
+		{
+			$consultor = new Consultor();
+			return $consultor->consultar($this->sqlConsultaListarUsuarios());
+        }
+        private function sqlConsultaListarUsuarios()
+		{
+			return
+			"
+				SELECT 
+				U.ID_USUARIO,
+				U.ID_TIPO_USUARIO,
+				U.CPF,
+				U.DATA_NASCIMENTO,
+				U.SEXO,
+				U.NOME_USUARIO,
+				U.EMAIL,
+				U.LOGIN,
+				U.SENHA,
+				U.ID_APARTAMENTO,
+				AP.N_APARTAMENTO,
+				U.APROVADO,
+				U.DATA_APROVACAO
+			FROM
+				USUARIO U
+					LEFT JOIN
+				APARTAMENTO AP ON AP.ID_APARTAMENTO = U.ID_APARTAMENTO
 			";			
 		}
     }

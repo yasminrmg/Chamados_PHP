@@ -3,7 +3,7 @@ var Master =
     validaFormulario: function (idPai) {
         var txtNPreenchidos = 0;
 
-        $('#' + idPai + ' input[type="password"].obrigatorio:visible, input[type="text"].obrigatorio:visible, select.obrigatorio:visible, textarea.obrigatorio:visible').each
+        $('#' + idPai + ' input[type="password"].obrigatorio:visible, #' + idPai + ' input[type="text"].obrigatorio:visible, #' + idPai + ' select.obrigatorio:visible, #' + idPai + ' textarea.obrigatorio:visible').each
             (
                 function (indice, elemento) {
                     $(elemento).removeClass('nao-preenchido');
@@ -188,6 +188,7 @@ var Master =
     ativaMascaras: function ()
     {
         $('.cpf').mask("999.999.999-99");
+        $('.hora').mask("99:99");
         $('.calendario.dd-mm').mask('99/99');
         $('.calendario.dd-mm-yyyy').mask('99/99/9999');
 

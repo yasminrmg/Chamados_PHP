@@ -39,7 +39,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="sltSexo">Sexo *</label>
-                        <select class="form-control obrigatorio" id=sltSexo" name="sltSexo">
+                        <select class="form-control obrigatorio" id="sltSexo" name="sltSexo">
                             <option value="M">Masculino</option>
                             <option value="F">Feminino</option>
                         </select>
@@ -58,13 +58,13 @@
                     </div>
                     <div class="form-group col-md-8">
                         <label for="sltCondominio">Condominio *</label>
-                        <select class="form-control condominio obrigatorio" id=sltCondominio" name="sltCondominio" onchange="Apartamento.popular();">
+                        <select class="form-control condominio obrigatorio" id="sltCondominio" name="sltCondominio" onchange="Apartamento.popular();">
 
                         </select>
                     </div>
                     <div class="form-group col-md-4">
                         <label for="sltApartamento">Apartamento *</label>
-                        <select class="form-control apartamento obrigatorio" id=sltApartamento" name="sltApartamento">
+                        <select class="form-control apartamento obrigatorio" id="sltApartamento" name="sltApartamento">
 
                         </select>
                     </div>
