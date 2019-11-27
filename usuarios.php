@@ -18,18 +18,7 @@
 <body>
     <?php include "menu_index.php"; ?>
         <main class="container mt-4">
-            <div class="row">
-                <div class="col-md-3">
-                    <div class="card-header">
-                        mostrar por:
-                    </div>
-                    <div class="list-group" id="list-tab" role="tablist">
-                        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-                        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-                        <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-                        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-                    </div>
-                </div>
+            <div class="row justify-content-center">
                 <div class=" col-md-9">
                     <div class="accordion" id="lista_usuarios">
                         <!-- aqui fica a lista de usuarios 
@@ -118,7 +107,8 @@
                 <!-- /.modal-content -->
             </div>
             <!-- /.modal-dialog -->
-        </div>        <!-- Libraries -->
+        </div>        
+        <!-- Libraries -->
         <script src="lib/jquery-3.4.1.min.js"></script>
         <script src="lib/jquery.maskedinput.min.js"></script>
         <script src="lib/popper.min.js"></script>
@@ -130,6 +120,9 @@
         <script src="js/geral/Ajax.js"></script>
         <script src="js/usuario/Usuario.js"></script>
         <script src="js/geral/Init.js"></script>
+        <script src="js/condominio/Condominio.js"></script>
+        <script src="js/condominio/Apartamento.js"></script>
+
 
         <script>
             $(document).ready(function() {

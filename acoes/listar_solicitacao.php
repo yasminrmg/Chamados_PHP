@@ -49,7 +49,7 @@
                                         </div>-->
                                         <div class="form-group col-md-12">
                                             <label for="txtDescricao">Descrição da solicitação *</label>
-                                            <textarea class="form-control " id="txtDescricao" name="txtDescricao" placeholder="Informe detalhes de sua solicitação aqui" rows="3" value="'.$res['DESCRICAO_SOLICITACAO'].'" disabled></textarea>
+                                            <textarea class="form-control " id="txtDescricao" name="txtDescricao" placeholder="Informe detalhes de sua solicitação aqui" rows="3" disabled>'.$res['DESCRICAO_SOLICITACAO'].'</textarea>
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="sltTipoSolicitacao">Tipo de solicitação *</label>

@@ -1,16 +1,21 @@
+<?php include_once 'classes/class.Sessao.php';
+
+    $sessao = new Sessao();
+
+    $codUsuario = $nome = $sessao->pegaValorSessao("CodUsuario");
+    $tipoUsuario = $nome = $sessao->pegaValorSessao("TipoUsuario");
+?>
 <header>
-    <nav class="navbar navbar-dark bg-dark">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <!-- Navbar content -->
-                <a class="navbar-brand" href="#">Momento Boulevard</a>
-            </div>
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg ">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+    <a class="navbar-brand" href="#">Momento Boulevard</a>
 
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler d-block d-sm-none" type="button" data-toggle="collapse" data-target="#formLogin">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
+    <?php 
+        if(!$codUsuario){
+    ?>
             <form id="formLogin" class="navbar-form navbar-right" onsubmit="return Login.validar();">
                 <div class="form-row">
                     <div class="form-group col-md-5 mb-0">
@@ -24,6 +29,25 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </nav>
+    <?php 
+        }elseif($codUsuario){?>
+            <div class=" navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="solicitacoes.php">Solicitações</a>
+                </li>
+            <?php if($tipoUsuario == 1){?>
+                <li class="nav-item">
+                    <a class="nav-link" href="apartamentos.php">Cadastrar Apartamentos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="usuarios.php"><?php if($tipoUsuario != 1) echo("Perfil"); else echo("Usuarios");?> </a>
+                </li>
+            <?php }?>
+                </ul>
+            </div>     
+        <?php } ?>
+  </div>
+</nav>
+    
 </header>

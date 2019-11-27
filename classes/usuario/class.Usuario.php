@@ -65,12 +65,12 @@
 			";			
 		}
 
-		public function listarUsuarios()
+		public function listarUsuarios($id_usuario, $id_tipo_usuario)
 		{
 			$consultor = new Consultor();
-			return $consultor->consultar($this->sqlConsultaListarUsuarios());
+			return $consultor->consultar($this->sqlConsultaListarUsuarios($id_usuario, $id_tipo_usuario));
         }
-        private function sqlConsultaListarUsuarios()
+        private function sqlConsultaListarUsuarios($id_usuario, $id_tipo_usuario)
 		{
 			return
 			"
@@ -78,7 +78,8 @@
 				U.ID_USUARIO,
 				U.ID_TIPO_USUARIO,
 				U.CPF,
-				U.DATA_NASCIMENTO,
+				DATE_FORMAT(U.DATA_NASCIMENTO, '%d/%m/%Y') AS DATA_NASCIMENTO,
+				-- U.DATA_NASCIMENTO,
 				U.SEXO,
 				U.NOME_USUARIO,
 				U.EMAIL,
@@ -86,13 +87,58 @@
 				U.SENHA,
 				U.ID_APARTAMENTO,
 				AP.N_APARTAMENTO,
+				AP.ID_CONDOMINIO,
 				U.APROVADO,
+				CASE
+					WHEN U.APROVADO = 1 
+						THEN 'APROVADO'
+						ELSE 'REPROVADO'
+				END AS S_APROVADO,
 				U.DATA_APROVACAO
 			FROM
 				USUARIO U
 					LEFT JOIN
 				APARTAMENTO AP ON AP.ID_APARTAMENTO = U.ID_APARTAMENTO
+			WHERE
+				(U.ID_USUARIO = $id_usuario AND U.ID_TIPO_USUARIO = $id_tipo_usuario)
+				OR 1=$id_tipo_usuario;
 			";			
 		}
+
+		public function alteraUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado)
+		{
+			$consultor = new Consultor();
+			return $consultor->consultar($this->sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado));
+			//die /*$consultor->consultar*/($this->sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado));
+        }
+        private function sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado)
+		{
+			$select=
+			"
+			UPDATE USUARIO
+			SET
+				CPF = '$cpf',
+				DATA_NASCIMENTO = '$nascimento',
+				SEXO = '$sexo',
+				NOME_USUARIO = '$nome',
+				EMAIL = '$email',
+				LOGIN = '$usuario',
+				SENHA = '$senha'";
+			if($apartamento != null && $condominio != null){
+				$select.="
+				,ID_APARTAMENTO = $apartamento";
+			}
+			if($aprovado != null){
+				$select.=",
+				DATA_APROVACAO = now()
+				, APROVADO = $aprovado";
+			}
+			$select.=
+			" WHERE ID_USUARIO = $id_usuario;
+			";
+			
+			return $select;
+		}
+
     }
 ?>

@@ -12,26 +12,51 @@
 
         $usuario  = new UsuarioDao();
         $retorno = array();
-        $resultado = $usuario->listarUsuarios();
+        $resultado = $usuario->listarUsuarios($codUsuario,$tipoUsuario);
         $html = '';
+        
+        $mostra='';//exibe perfil ao abrir tela
+        if($tipoUsuario != 1){
+            $mostra = 'show';
+        }else{
+            $mostra = '';
+        }
 
         foreach($resultado as $res)
         {
             $html .='<div class="card" cod-usuario="'.$res['ID_USUARIO'].'">
-                        <div class="card-header collapsed" id="user'.$res['ID_USUARIO'].'" data-toggle="collapse" data-target="#corpoSolictacao'.$res['ID_USUARIO'].'" aria-expanded="false" aria-controls="corpoSolictacao">
+                        <div class="card-header collapsed" id="user'.$res['ID_USUARIO'].'" data-toggle="collapse" data-target="#corpoPerfilUsuario'.$res['ID_USUARIO'].'" aria-expanded="" aria-controls="corpoPerfilUsuario'.$res['ID_USUARIO'].'">
                             <h5 class="mb-0 d-flex justify-content-between align-items-center text-dark">
                                 '.$res['NOME_USUARIO'].'
-                                <span class="badge badge-primaty">'.$res['APROVADO'].'</span>
+                                <span class="badge badge-primaty">'.$res['S_APROVADO'].'</span>
                             </h5>
                         </div>
-                        <div id="corpoSolictacao'.$res['ID_USUARIO'].'" class="collapse" aria-labelledby="user'.$res['ID_USUARIO'].'" data-parent="#lista_usuarios">
-                            <form id="formCadastro" class="form-cadastro m-auto">
+                        <div id="corpoPerfilUsuario'.$res['ID_USUARIO'].'" class="collapse '.$mostra.'" aria-labelledby="user'.$res['ID_USUARIO'].'" data-parent="#lista_usuarios">
+                            <form id="formCadastro-'.$res['ID_USUARIO'].'" class="class="form-cadastro m-auto" onsubmit="return Usuario.alteraCadastro($(this));">
                                 <div id="dvCadastro" class="card-body">
                                     <div class="form-row mt-4">
+                                        <div class="form-group col-md-3" style="display:none;">
+                                            <label for="txtId">Código</label>
+                                            <input type="text" class="form-control obrigatorio" id="txtId" name="txtId" value="'.$res['ID_USUARIO'].'">
+                                        </div>';
+                            if($tipoUsuario == 1 && $res['ID_TIPO_USUARIO'] != 1){
+                                $html.=
+                                        '
+                                        <div class="form-group col-md-2">
+                                            <label for="sltPerfilAprovado">Perfil *</label>
+                                            <select id="sltPerfilAprovado" name="sltPerfilAprovado" class="form-control obrigatorio selectpicker bg-warning custom-select" value="'.$res['APROVADO'].'">
+                                                <option selected>Escolha</option>
+                                                <option value="1">Aprovado</option>
+                                                <option value="0">Reprovado</option>
+                                            </select>
+                                        </div>';
+                            }
+                                $html.='        
                                         <div class="form-group col-md-12">
                                             <label for="txtNome">Nome completo *</label>
                                             <input type="text" class="form-control obrigatorio" id="txtNome" name="txtNome" placeholder="Nome completo" value="'.$res['NOME_USUARIO'].'">
                                         </div>
+                                
                                         <div class="form-group col-md-4">
                                             <label for="txtNascimento">Nascimento *</label>
                                             <input type="text" class="form-control calendario dd-mm-yyyy obrigatorio" id="txtNascimento" name="txtNascimento" placeholder="dd/mm/aaaa" value="'.$res['DATA_NASCIMENTO'].'">
@@ -55,25 +80,33 @@
                                             <label for="txtUsuario">Usuário *</label>
                                             <input type="text" class="form-control obrigatorio" id="txtUsuario" name="txtUsuario" placeholder="Usuário" value="'.$res['LOGIN'].'">
                                         </div>
-                                        <!--<div class="form-group col-md-3">
+                                        <div class="form-group col-md-3">
                                             <label for="txtSenha">Senha *</label>
                                             <input type="password" class="form-control obrigatorio" id="txtSenha" name="txtSenha" value="'.$res['SENHA'].'">
-                                        </div>-->
-                                        <div class="form-group col-md-8">
-                                            <label for="sltCondominio">Condominio *</label>
-                                            <select class="form-control condominio obrigatorio" id="sltCondominio" name="sltCondominio" onchange="Apartamento.popular();" value="'.$res['ID_APARTAMENTO'].'">
-                    
-                                            </select>
-                                        </div>
-                                        <div class="form-group col-md-4">
-                                            <label for="sltApartamento">Apartamento *</label>
-                                            <select class="form-control apartamento obrigatorio" id="sltApartamento" name="sltApartamento" value="'.$res['ID_APARTAMENTO'].'">
-                    
-                                            </select>
-                                        </div>
+                                        </div>';
+                                        if($res['ID_TIPO_USUARIO'] == 3){
+
+                                        $html .='
+                                            <div class="form-group col-md-8">
+                                                <label for="sltCondominio">Condominio *</label>
+                                                <select class="form-control condominio obrigatorio" id="sltCondominio" name="sltCondominio" onchange="" cond="'.$res['ID_CONDOMINIO'].'" >
+                                                    <option selected></option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-4">
+                                                <label for="sltApartamento">Apartamento *</label>
+                                                <select class="form-control apartamento obrigatorio" id="sltApartamento" name="sltApartamento" onchange="" ap="'.$res['ID_APARTAMENTO'].'" >
+                                                    <option selected></option>
+                                                </select>
+                                            </div>
+                                        ';
+                                        }
+                                    $html .= '
                                     </div>
-                                    <button class="btn btn-md btn-primary btn-block" type="submit">Alterar</button>                
-                                    <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar-me</button>-->
+                                    <div class="row justify-content-center">
+                                        <button class="btn btn-md btn-primary btn-block col-md-4" type="submit">Salvar</button>                
+                                        <!--<button class="btn btn-lg btn-primary btn-block" type="submit">Cadastrar-me</button>-->
+                                    </div>
                                 </div>
                             </form>
                         </div>

@@ -57,6 +57,48 @@ var Usuario =
             // $("#dvConclusao").removeClass('d-none');
             
             $(dados.USUARIOS).appendTo("#lista_usuarios");
+            Condominio.popular();
+            Apartamento.popular();
+            $('#lista_usuarios #sltApartamento').val($('#lista_usuarios #sltApartamento').attr('ap'));
+            
+                // var ap = $(index).find('sltApartamento');
+                // var valor = $(index).attr('ap');
+                // ap.select(valor);
+             
+        }
+        else
+            Master.exibeModalAviso("erro", "Ocorreu um erro ao realizar o cadastro.", "Atenção!")
+    },
+    alteraCadastro : function(form)
+    {
+        event.preventDefault();
+        if(Master.validaFormulario($(form).attr('id')))
+        {
+            var Ajax = new RunAjax();
+            Ajax._url = 'acoes/alteracao_usuario.php';
+            Ajax._method = 'POST';
+            Ajax._tipo_data = 'json';
+            Ajax._postdata ={'dados': form.serializeArray() };
+            Ajax.setMostraCarregando(true);
+            Ajax.setFechaCarregando(true);
+            Ajax.setMostraErro(true);
+            Ajax.setFuncaoInicia(null);
+            Ajax.setFuncaoFinaliza(Usuario.trataRetornoAlteracaoUsuario);
+            Ajax.setFuncaoErro(null);
+            Ajax.Execute();
+        }
+        else
+            return false;
+    },
+    trataRetornoAlteracaoUsuario : function(dados)
+    {
+        if (dados.SUCESSO == true)
+        {	
+            // $("#dvCadastro").hide();
+            // $("#dvConclusao").show();
+            // $("#dvConclusao").removeClass('d-none');
+            
+            $(dados.USUARIOS).appendTo("#lista_usuarios");
         }
         else
             Master.exibeModalAviso("erro", "Ocorreu um erro ao realizar o cadastro.", "Atenção!")
