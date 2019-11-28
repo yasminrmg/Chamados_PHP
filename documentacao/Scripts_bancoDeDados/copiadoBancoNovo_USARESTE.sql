@@ -1,5 +1,5 @@
-CREATE DATABASE  IF NOT EXISTS `dbSCO` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
-USE `dbSCO`;
+CREATE DATABASE  IF NOT EXISTS `chamado_rapido` /*!40100 DEFAULT CHARACTER SET utf8mb4 */;
+USE `chamado_rapido`;
 -- MySQL dump 10.13  Distrib 5.7.28, for Win32 (AMD64)
 --
 -- Host: localhost    Database: chamado_rapido
