@@ -1,5 +1,4 @@
-.bolinhas
-{
+.bolinhas {
     height: 250px;
     width: 250px;
     vertical-align: middle;
@@ -9,8 +8,13 @@
     transition: opacity 0.5s ease-in-out;
 }
 
-.bolinhas:hover
-{
+.bolinhas:hover {
     color: black !important;
     cursor: pointer;
+}
+
+.bgdiv {
+    background: url("../imagens/fundo_cadastro.png") no-repeat center center;
+    background-size: auto;
+    color: white;
 }

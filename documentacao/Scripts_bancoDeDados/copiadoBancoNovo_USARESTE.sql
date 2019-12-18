@@ -28,15 +28,24 @@ CREATE TABLE `apartamento` (
   `id_apartamento` int(11) NOT NULL AUTO_INCREMENT,
   `id_condominio` int(11) DEFAULT NULL,
   `bloco` varchar(20) DEFAULT NULL,
-  `n_apartamento` int(11) DEFAULT NULL,
-  `n_vaga` int(11) DEFAULT NULL,
+  `n_apartamento` varchar(11) DEFAULT NULL,
+  `n_vaga` varchar(11) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `id_operador` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_apartamento`),
   KEY `id_condominio` (`id_condominio`),
   CONSTRAINT `apartamento_ibfk_1` FOREIGN KEY (`id_condominio`) REFERENCES `condominio` (`id_condominio`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+--
+-- Dumping data for table `apartamento`
+--
+
+LOCK TABLES `apartamento` WRITE;
+/*!40000 ALTER TABLE `apartamento` DISABLE KEYS */;
+INSERT INTO `apartamento` VALUES (1,1,'2',45,2,'2019-11-25 15:52:42',1);
+/*!40000 ALTER TABLE `apartamento` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `condominio`
@@ -54,8 +63,18 @@ CREATE TABLE `condominio` (
   `data_cadastro` datetime DEFAULT current_timestamp(),
   `id_operador` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_condominio`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `condominio`
+--
+
+LOCK TABLES `condominio` WRITE;
+/*!40000 ALTER TABLE `condominio` DISABLE KEYS */;
+INSERT INTO `condominio` VALUES (1,'Momento Boulevard','Av. Paulista, 700','São Paulo','SP','2019-11-25 15:51:13',1);
+/*!40000 ALTER TABLE `condominio` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `solicitacao`
@@ -83,7 +102,7 @@ CREATE TABLE `solicitacao` (
   CONSTRAINT `solicitacao_ibfk_1` FOREIGN KEY (`id_tipo_solicitacao`) REFERENCES `tipo_solicitacao` (`id_tipo_solicitacao`),
   CONSTRAINT `solicitacao_ibfk_2` FOREIGN KEY (`id_solicitante`) REFERENCES `usuario` (`id_usuario`),
   CONSTRAINT `solicitacao_ibfk_3` FOREIGN KEY (`id_atendente`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -107,6 +126,16 @@ CREATE TABLE `solicitacao_status` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
+-- Dumping data for table `solicitacao_status`
+--
+
+LOCK TABLES `solicitacao_status` WRITE;
+/*!40000 ALTER TABLE `solicitacao_status` DISABLE KEYS */;
+INSERT INTO `solicitacao_status` VALUES (1,'Aberto','Chamado a ser atendido',1,'2019-11-26 12:19:12','badge-primary'),(2,'Em atendimento','A solicitacao esta recebendo atenção e logo será atendido',1,'2019-11-26 12:19:12','badge-secondary'),(3,'Concluído','Solicitação atendida',1,'2019-11-26 12:19:12','badge-success');
+/*!40000 ALTER TABLE `solicitacao_status` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `tipo_solicitacao`
 --
 
@@ -122,8 +151,18 @@ CREATE TABLE `tipo_solicitacao` (
   PRIMARY KEY (`id_tipo_solicitacao`),
   KEY `id_operador` (`id_operador`),
   CONSTRAINT `tipo_solicitacao_ibfk_1` FOREIGN KEY (`id_operador`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_solicitacao`
+--
+
+LOCK TABLES `tipo_solicitacao` WRITE;
+/*!40000 ALTER TABLE `tipo_solicitacao` DISABLE KEYS */;
+INSERT INTO `tipo_solicitacao` VALUES (1,'SOLICITAÇÃO','2019-11-25 13:39:38',1,_binary ''),(2,'EVENTO','2019-11-25 13:39:38',1,_binary '');
+/*!40000 ALTER TABLE `tipo_solicitacao` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `tipo_usuario`
@@ -139,8 +178,18 @@ CREATE TABLE `tipo_usuario` (
   `ativo` bit(1) DEFAULT NULL,
   `data_cadastro` datetime DEFAULT current_timestamp(),
   PRIMARY KEY (`id_tipo_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `tipo_usuario`
+--
+
+LOCK TABLES `tipo_usuario` WRITE;
+/*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
+INSERT INTO `tipo_usuario` VALUES (1,'Administrador',NULL,_binary '','2019-11-21 10:06:45'),(2,'Funcionário',NULL,_binary '','2019-11-25 16:07:26'),(3,'Morador',NULL,_binary '','2019-11-25 16:07:48');
+/*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `usuario`
@@ -170,7 +219,7 @@ CREATE TABLE `usuario` (
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_tipo_usuario`) REFERENCES `tipo_usuario` (`id_tipo_usuario`),
   CONSTRAINT `usuario_ibfk_2` FOREIGN KEY (`id_apartamento`) REFERENCES `apartamento` (`id_apartamento`),
   CONSTRAINT `usuario_ibfk_3` FOREIGN KEY (`id_operador`) REFERENCES `usuario` (`id_usuario`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 LOCK TABLES `usuario` WRITE;

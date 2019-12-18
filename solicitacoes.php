@@ -116,7 +116,6 @@
 
         <script src="js/geral/Master.js"></script>
         <script src="js/geral/Ajax.js"></script>
-        <!-- <script src="js/usuario/Usuario.js"></script> -->
         <script src="js/geral/Init.js"></script>
         <script src="js/solicitacao/Solicitacao.js"></script>
 

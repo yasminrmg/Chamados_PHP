@@ -23,7 +23,7 @@
         $nome = $dados['txtNome'];
         $nascimento = implode("-",array_reverse(explode("/",$dados['txtNascimento'])));
         $cpf = $dados['txtCPF'];
-        $sexo = $dados['sltSexo'];
+        //$sexo = $dados['sltSexo'];
         $email = $dados['txtEmail'];
         $usuario = $dados['txtUsuario'];
         $senha = $dados['txtSenha'];
@@ -32,13 +32,13 @@
         $apartamento =null;
         $aprovado=null;
 
-        if (isset($dados['sltCondominio']) && isset($dados['sltApartamento']))
-        {
-            $condominio = $dados['sltCondominio'];
-            $apartamento = $dados['sltApartamento'];
-        }else{
-            ;
-        }
+        // if (isset($dados['sltCondominio']) && isset($dados['sltApartamento']))
+        // {
+        //     $condominio = $dados['sltCondominio'];
+        //     $apartamento = $dados['sltApartamento'];
+        // }else{
+        //     ;
+        // }
         if(isset($dados['sltPerfilAprovado']) && $tipoUsuario!=3)
         {   
             if (is_numeric($dados['sltPerfilAprovado']))
@@ -47,7 +47,7 @@
 
         $usuarioDao = new UsuarioDao();
         $retorno = array();
-        $usuarioDao->alteraUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado);
+        $usuarioDao->alteraUsuario($id_usuario, $nome, $nascimento, $cpf, $email, $usuario, $senha, $condominio, $apartamento, $aprovado);
         $retorno["SUCESSO"]= true;
     }else{
         $retorno["SUCESSO"]=false;

@@ -9,7 +9,7 @@
 
 
     $retorno["APARTAMENTOS"] = $resultado;
-    $retorno["SUCESSO"]= true;	
+    $retorno["SUCESSO"]= true;
 
     echo json_encode($retorno);
 ?>

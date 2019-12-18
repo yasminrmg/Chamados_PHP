@@ -17,11 +17,11 @@
   <body>
     <?php include "menu_index.php"; ?>
 
-    <div class="position-relative overflow-hidden m-md-3 text-center bg-light">
+    <div class="position-relative overflow-hidden m-md-3 text-center bg-light bgdiv">
       <div class="col-md-5 p-lg-2 mx-auto my-5">
         <h1 class="display-4 font-weight-normal">Bem vindo!</h1>
         <p class="lead font-weight-normal">Este é o sistema mais moderno e completo de gerenciamento e solicitações para condominios.</p>
-        <a class="btn btn-outline-secondary" href="usuario_cadastro.php">Cadastre-se</a>
+        <a class="btn btn-light" href="usuario_cadastro.php">Cadastre-se</a>
       </div>
     </div>
 

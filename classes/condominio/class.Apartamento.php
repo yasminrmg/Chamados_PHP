@@ -30,7 +30,6 @@
 		{
 			$consultor = new Consultor();
             return $consultor->consultar($this->sqlConsultaInsereApartamento($bloco,$ap,$vaga,$condominio));
-            //die($this->sqlConsultaInsereApartamento($bloco,$ap,$vaga,$condominio));
         }
         
         private function sqlConsultaInsereApartamento($bloco,$ap,$vaga,$condominio)
@@ -40,7 +39,7 @@
                 INSERT INTO apartamento
                 (bloco,n_apartamento,n_vaga,id_condominio)
                 VALUES
-                ('$bloco',$ap,$vaga,$condominio)
+                ('$bloco','$ap','$vaga',$condominio)
             ";			
 		}
     }

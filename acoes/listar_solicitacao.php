@@ -52,11 +52,12 @@
                                             <textarea class="form-control " id="txtDescricao" name="txtDescricao" placeholder="Informe detalhes de sua solicitação aqui" rows="3" disabled>'.$res['DESCRICAO_SOLICITACAO'].'</textarea>
                                         </div>
                                         <div class="form-group col-md-4">
-                                            <label for="sltTipoSolicitacao">Tipo de solicitação *</label>
-                                            <select class="form-control " id="sltTipoSolicitacao" name="sltTipoSolicitacao" value="'.$res['ID_TIPO_SOLICITACAO'].'" disabled>
+                                            <label for="sltTipoSolicitacao">Tipo de solicitação </label>
+                                            <!--<select class="form-control " id="sltTipoSolicitacao" name="sltTipoSolicitacao" value="'.$res['ID_TIPO_SOLICITACAO'].'" disabled>
                                                 <option value="1">Solicitação</option>
                                                 <option value="2">Evento</option>
-                                            </select>
+                                            </select>-->
+                                            <div>'.$res['TITULO_TIPO_SOLICITACAO'].'</div>
                                         </div>
                                         <div class="form-group col-md-4 evento">
                                             <label for="txtDataEnvento">Data do Evento *</label>

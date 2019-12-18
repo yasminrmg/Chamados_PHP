@@ -1,5 +1,5 @@
 <?php
-    include '../classes/solicitacao/class.solicitacao.php';
+    include '../classes/condominio/class.Condominio.php';
     include_once '../classes/class.Sessao.php';
 
     $sessao = new Sessao();
@@ -13,16 +13,16 @@
         {
             $dados[$itens['name']]= str_replace("'", "''", $itens['value']) ;
         }
-        if($dados['txtDuracaoEnvento']!=null){
-            $data = date("Y-m-d", strtotime($dados['txtDuracaoEnvento']));
-        }else{
-            $data = null;
-        }
 
-        $usuarioDao = new Solicitacao();
+        $nome_condominio = $dados['txtNomeCondominio'];
+        $endereco = $dados['txtEndereco'];
+        $cidade = $dados['txtCidade'];
+        $uf = $dados['txtEstado'];
+
+        $condominioDao = new CondominioDao();
         $retorno = array();
-        $usuarioDao->criaSolicitacao($dados['txtTitulo'], $dados['txtDescricao'], $codUsuario, $dados['sltTipoSolicitacao'], $data, $dados['txtDuracaoEnvento'], $statusSolicitacao = 1);
-        $retorno["SUCESSO"]= true; 
+        $condominioDao->inserirCondominio($nome_condominio,$endereco,$cidade,$uf,$codUsuario);
+        $retorno["SUCESSO"]= true;
     }else{
         $retorno["SUCESSO"]=false;
         $retorno["MSG"]="Login inativo";

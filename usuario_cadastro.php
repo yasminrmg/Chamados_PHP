@@ -15,7 +15,7 @@
     <title>SCO - Cadastre-se</title>
   </head>
   <body>
-
+    <?php include "menu_index.php"; ?>
     <form id="formCadastro" class="form-cadastro col-md-6 m-auto p-4" onsubmit="return Usuario.cadastrar();">
         <div class="card">
             <div class="card-header text-center">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="form-group col-md-4">
                         <label for="txtCPF">CPF *</label>
-                        <input type="text" class="form-control cpf obrigatorio" id="txtCPF" name="txtCPF" placeholder="99.999.999-99">
+                        <input type="text" class="form-control cpf obrigatorio" id="txtCPF" name="txtCPF" placeholder="999.999.999-99">
                     </div>
                     <div class="form-group col-md-4">
                         <label for="sltSexo">Sexo *</label>
@@ -46,7 +46,7 @@
                     </div>
                     <div class="form-group col-md-6">
                         <label for="txtEmail">E-mail *</label>
-                        <input type="text" class="form-control obrigatorio" id="txtEmail" name="txtEmail" placeholder="email@dominio.com">
+                        <input type="email" class="form-control obrigatorio" id="txtEmail" name="txtEmail" placeholder="email@dominio.com">
                     </div>
                     <div class="form-group col-md-3">
                         <label for="txtUsuario">Usuário *</label>

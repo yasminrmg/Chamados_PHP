@@ -9,10 +9,10 @@
     $retorno = array();
     $resultado = $usuarioDao->validaLogin($usuario, $senha);
   
-    if($resultado[0]["SUCESSO"])
+    if($resultado)
     {
         if($resultado[0]["PERMITIDO"] == 1)
-        {	
+        {
             $retorno["TIPOUSUARIO"]= $resultado[0]["ID_TIPO_USUARIO"];
             
             $sessao = new Sessao();
@@ -27,7 +27,7 @@
             $retorno["SUCESSO"]= false;
     }
     else
-        $retorno["SUCESSO"]= false;	
+        $retorno["SUCESSO"]= false;
 
     echo json_encode($retorno);
 ?>

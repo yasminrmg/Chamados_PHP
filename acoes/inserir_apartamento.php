@@ -12,9 +12,9 @@
     $vaga = $dados['txtVaga'];
     $condominio = $dados['sltCondominio'];
 
-    $usuarioDao = new ApartamentoDao();
+    $apartamentoDao = new ApartamentoDao();
     $retorno = array();
-    $usuarioDao->inserirApartamento($bloco,$ap,$vaga,$condominio);
+    $apartamentoDao->inserirApartamento($bloco,$ap,$vaga,$condominio);
     $retorno["SUCESSO"]= true;	
 
     echo json_encode($retorno);

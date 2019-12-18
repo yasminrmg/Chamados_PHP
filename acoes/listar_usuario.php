@@ -67,14 +67,15 @@
                                         </div>
                                         <div class="form-group col-md-4">
                                             <label for="sltSexo">Sexo *</label>
-                                            <select class="form-control obrigatorio" id="sltSexo" name="sltSexo" value="">
+                                            <!--<select class="form-control obrigatorio" id="sltSexo" name="sltSexo" value="">
                                                 <option value="M">Masculino</option>
                                                 <option value="F">Feminino</option>
-                                            </select>
+                                            </select>-->
+                                            <div>'.$res['SEXO'].'</div>
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="txtEmail">E-mail *</label>
-                                            <input type="text" class="form-control obrigatorio" id="txtEmail" name="txtEmail" placeholder="email@dominio.com" value="'.$res['EMAIL'].'">
+                                            <input type="email" class="form-control obrigatorio" id="txtEmail" name="txtEmail" placeholder="email@dominio.com" value="'.$res['EMAIL'].'">
                                         </div>
                                         <div class="form-group col-md-3">
                                             <label for="txtUsuario">Usuário *</label>
@@ -89,15 +90,19 @@
                                         $html .='
                                             <div class="form-group col-md-8">
                                                 <label for="sltCondominio">Condominio *</label>
-                                                <select class="form-control condominio obrigatorio" id="sltCondominio" name="sltCondominio" onchange="" cond="'.$res['ID_CONDOMINIO'].'" >
+                                                <!--<select class="form-control condominio obrigatorio" id="sltCondominio" name="sltCondominio" onchange="" cond="'.$res['ID_CONDOMINIO'].'" >
                                                     <option selected></option>
-                                                </select>
+                                                </select>-->
+                                                <div>'.$res['NOME_CONDOMINIO'].'</div>
                                             </div>
                                             <div class="form-group col-md-4">
                                                 <label for="sltApartamento">Apartamento *</label>
-                                                <select class="form-control apartamento obrigatorio" id="sltApartamento" name="sltApartamento" onchange="" ap="'.$res['ID_APARTAMENTO'].'" >
+                                                <!--<select class="form-control apartamento obrigatorio" id="sltApartamento" name="sltApartamento" onchange="" ap="'.$res['ID_APARTAMENTO'].'" >
                                                     <option selected></option>
-                                                </select>
+                                                </select>-->
+                                                <div>Bloco: '.$res['BLOCO'] . ' - Ap: ' .
+                                                $res['N_APARTAMENTO'] . ' - Vaga:' . 
+                                                $res['N_VAGA'].'</div>
                                             </div>
                                         ';
                                         }

@@ -8,7 +8,7 @@
             if(!isset($_SESSION))
             { 
                 session_start(); 
-            };
+            }
         }
 
         public function gravaValorSessao($nomeSessao, $valor)
@@ -26,6 +26,11 @@
 			{
 				return $Default;
 			}
+		}
+
+		public function logout()
+		{
+			session_destroy();
 		}
     }
 ?>

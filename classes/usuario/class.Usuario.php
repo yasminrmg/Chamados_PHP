@@ -19,7 +19,7 @@
 						NOME_USUARIO, 
 						SENHA 
 					FROM USUARIO  
-					WHERE LOGIN = '$usuario' AND SENHA = '$senha';";			
+					WHERE LOGIN = '$usuario' AND SENHA = '$senha' AND APROVADO = 1 ;";			
 		}
 
 		public function inserirUsuario($nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento)
@@ -87,7 +87,10 @@
 				U.SENHA,
 				U.ID_APARTAMENTO,
 				AP.N_APARTAMENTO,
+				AP.BLOCO,
+				AP.N_VAGA,
 				AP.ID_CONDOMINIO,
+				CD.NOME_CONDOMINIO,
 				U.APROVADO,
 				CASE
 					WHEN U.APROVADO = 1 
@@ -99,19 +102,21 @@
 				USUARIO U
 					LEFT JOIN
 				APARTAMENTO AP ON AP.ID_APARTAMENTO = U.ID_APARTAMENTO
+					LEFT JOIN
+				CONDOMINIO CD ON CD.ID_CONDOMINIO = AP.ID_CONDOMINIO
 			WHERE
 				(U.ID_USUARIO = $id_usuario AND U.ID_TIPO_USUARIO = $id_tipo_usuario)
 				OR 1=$id_tipo_usuario;
 			";			
 		}
 
-		public function alteraUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado)
+		public function alteraUsuario($id_usuario, $nome, $nascimento, $cpf, $email, $usuario, $senha, $condominio, $apartamento, $aprovado)
 		{
 			$consultor = new Consultor();
-			return $consultor->consultar($this->sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado));
+			return $consultor->consultar($this->sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $email, $usuario, $senha, $condominio, $apartamento, $aprovado));
 			//die /*$consultor->consultar*/($this->sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado));
         }
-        private function sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $sexo, $email, $usuario, $senha, $condominio, $apartamento, $aprovado)
+        private function sqlConsultaAlterarUsuario($id_usuario, $nome, $nascimento, $cpf, $email, $usuario, $senha, $condominio, $apartamento, $aprovado)
 		{
 			$select=
 			"
@@ -119,7 +124,6 @@
 			SET
 				CPF = '$cpf',
 				DATA_NASCIMENTO = '$nascimento',
-				SEXO = '$sexo',
 				NOME_USUARIO = '$nome',
 				EMAIL = '$email',
 				LOGIN = '$usuario',

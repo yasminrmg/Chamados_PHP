@@ -21,6 +21,7 @@
             return"SELECT 
                         S.ID_SOLICITACAO,
                         S.ID_TIPO_SOLICITACAO,
+                        TS.TITULO_TIPO_SOLICITACAO,
                         S.TITULO_SOLICITACAO,   
                         S.DESCRICAO_SOLICITACAO,
                         S.ID_SOLICITANTE,
@@ -49,6 +50,8 @@
                     APARTAMENTO AP ON AP.ID_APARTAMENTO = CL.ID_APARTAMENTO
                         LEFT JOIN
                     SOLICITACAO_STATUS SS ON S.STATUS = SS.ID_STATUS_SOLICITACAO
+                        LEFT JOIN 
+                    TIPO_SOLICITACAO TS ON TS.ID_TIPO_SOLICITACAO = S.ID_TIPO_SOLICITACAO
                     WHERE
                         (S.ID_SOLICITANTE = $codUsuario AND CL.ID_TIPO_USUARIO = $tipoUsuario)
                         OR (S.ID_ATENDENTE = $codUsuario AND FC.ID_TIPO_USUARIO = 2)
